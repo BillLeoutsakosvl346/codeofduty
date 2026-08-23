@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- GitHub avatar URLs are dynamic provider data. */
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';

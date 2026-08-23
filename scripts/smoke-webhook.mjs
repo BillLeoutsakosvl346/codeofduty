@@ -1,7 +1,8 @@
-require('dotenv').config({ path: '.env.local' });
+import { randomUUID } from 'node:crypto';
+import { config } from 'dotenv';
+import Stripe from 'stripe';
 
-const { randomUUID } = require('node:crypto');
-const Stripe = require('stripe');
+config({ path: '.env.local' });
 
 async function main() {
   if (!process.env.STRIPE_WEBHOOK_SECRET) throw new Error('STRIPE_WEBHOOK_SECRET is required.');

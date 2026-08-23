@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- GitHub avatar URLs are dynamic provider data. */
 'use client';
 
 import { useEffect, useState } from 'react';

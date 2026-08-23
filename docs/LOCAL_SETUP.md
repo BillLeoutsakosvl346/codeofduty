@@ -44,7 +44,7 @@ Copy the displayed `whsec_...` signing secret into `STRIPE_WEBHOOK_SECRET` in `.
 The raw webhook body is signature-verified. A local signature and deduplication smoke test is also available while the dev server is running:
 
 ```powershell
-node scripts/smoke-webhook.cjs
+node scripts/smoke-webhook.mjs
 ```
 
 ## Provider sync
