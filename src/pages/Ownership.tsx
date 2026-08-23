@@ -24,6 +24,12 @@ const IMPACT_LABEL: Record<string, string> = {
   foundation: "5 PT FOUNDATION",
 };
 
+const FEATURE_NAMES: Record<string, string> = {
+  search: "HORSE DISCOVERY",
+  summary: "AI COMPATIBILITY",
+  sharing: "STABLE SHARING",
+};
+
 export function OwnershipPage() {
   const feature = ownership.features.find((candidate) => candidate.feature_id === "search");
   return (
@@ -82,7 +88,7 @@ export function OwnershipPage() {
       <Panel color={T.yellow} className="ownership-history">
         <div className="ownership-panel-head"><div><Label color={T.yellow}>Ownership over time</Label><h2 className="display">MERGE LEDGER</h2></div><Tag>PUSHER · DEMO-BOT · 0% CREDIT</Tag></div>
         <div className="ownership-history-head"><span>PR</span><span>Declared work</span><span>Contributors</span><span>Greptile</span><span>Impact</span></div>
-        {events.map((event) => <div className="ownership-history-row" key={event.event_id}><b>#{event.pull_request_number}</b><span><strong>{event.manifest.summary}</strong><small>{event.manifest.features.join(" + ")}</small></span><span className="ownership-contributors">{event.manifest.contributors.map((contributor) => <Tag key={contributor.contributor_id} color={T.cyan}>{CONTRIBUTOR_NAMES[contributor.contributor_id] ?? contributor.contributor_id} {contributor.share_bps / 100}%</Tag>)}</span><Tag color={event.greptile.status === "verified" ? T.good : T.warn}>{event.greptile.status}</Tag><b className="impact-label">{IMPACT_LABEL[event.manifest.impact]}</b></div>)}
+        {events.map((event) => <div className="ownership-history-row" key={event.event_id}><b>#{event.pull_request_number}</b><span><strong>{event.manifest.summary}</strong><small>{event.manifest.features.map((featureId) => FEATURE_NAMES[featureId] ?? featureId.toUpperCase()).join(" + ")}</small></span><span className="ownership-contributors">{event.manifest.contributors.map((contributor) => <Tag key={contributor.contributor_id} color={T.cyan}>{CONTRIBUTOR_NAMES[contributor.contributor_id] ?? contributor.contributor_id} {contributor.share_bps / 100}%</Tag>)}</span><Tag color={event.greptile.status === "verified" ? T.good : T.warn}>{event.greptile.status}</Tag><b className="impact-label">{IMPACT_LABEL[event.manifest.impact]}</b></div>)}
       </Panel>
     </div>
   );

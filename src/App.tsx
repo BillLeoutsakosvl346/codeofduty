@@ -33,7 +33,7 @@ function parseHash(): Route {
 
 function parseMe(): string {
   const me = new URLSearchParams(window.location.hash.split("?")[1] ?? "").get("me");
-  return engineers.some((engineer) => engineer.login === me) ? me! : "priya";
+  return engineers.some((engineer) => engineer.login === me) ? me! : "aanishs";
 }
 
 export default function App() {

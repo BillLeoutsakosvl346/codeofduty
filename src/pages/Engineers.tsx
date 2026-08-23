@@ -12,10 +12,10 @@ export function EngineersPage({ stats, me }: { stats: LiveStats[]; me: string })
   const streak = [...stats].sort((a, b) => b.streakDays - a.streakDays)[0];
   return (
     <div>
-      <div className="page-intro compact"><div><Label color={T.violet}>Engineer impact</Label><h1 className="display page-title">STANDINGS</h1><p>Feature points, bounty kills, assists, and completed missions.</p></div><Tag color={T.ink2}>OWNERSHIP · SEEDED PREVIEW</Tag></div>
+      <div className="page-intro compact"><div><Label color={T.violet}>ManeMatch builders</Label><h1 className="display page-title">STANDINGS</h1><p>Who built the horse-matching features, closed incidents, and shipped rider requests.</p></div><Tag color={T.ink2}>GITHUB + GREPTILE PREVIEW</Tag></div>
       <div className="standings-hero">
         <div className="podium-wrap">
-          <Label>Season 3 · top builders</Label>
+          <Label>ManeMatch season · top builders</Label>
           <div className="podium">
             {podium.map((stat, index) => {
               const color = colors[index];

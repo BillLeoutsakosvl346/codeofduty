@@ -3,7 +3,7 @@
   "features": [
     {
       "feature_id": "search",
-      "name": "Discover",
+      "name": "Horse Discovery",
       "paths": ["src/saas/features/search.ts"]
     },
     {
