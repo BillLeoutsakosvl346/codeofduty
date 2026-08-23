@@ -1,3 +1,16 @@
 .env
 
 .env.local
+node_modules/
+.next/
+.vinext/
+dist/
+.wrangler/
+coverage/
+outputs/
+work/
+next-env.d.ts
+npm-debug.log*
+.site-scaffold/
+node_modules
+*.tsbuildinfo

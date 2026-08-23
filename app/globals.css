@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+:root { --background:#070908; --foreground:#f4f7f4; }
+@theme inline {
+  --color-background:var(--background);
+  --color-foreground:var(--foreground);
+  --font-sans:"Arial Narrow", "Inter", Arial, sans-serif;
+  --font-mono:"SFMono-Regular", Consolas, monospace;
+}
+* { box-sizing:border-box; }
+html { background:#070908; }
+body {
+  margin:0;
+  background:var(--background);
+  color:var(--foreground);
+  font-family:"Arial Narrow", "Inter", Arial, Helvetica, sans-serif;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:44px 44px;
+  min-height:100vh;
+}
+.feed-cyan{background:#51d9ff;box-shadow:0 0 12px #51d9ff}.feed-amber{background:#ffb547;box-shadow:0 0 12px #ffb547}.feed-green{background:#b8ff38;box-shadow:0 0 12px #b8ff38}.feed-muted{background:#718078}
+::selection{background:#b8ff38;color:#071008}
+
+a { color:inherit; text-decoration:none; }
+button, input, textarea, select { font:inherit; }
+button { cursor:pointer; }
+.eyebrow { font-family:"SFMono-Regular",Consolas,monospace; font-size:9px; font-weight:800; letter-spacing:.19em; text-transform:uppercase; color:rgba(255,255,255,.34); }
+.panel-title { margin-top:4px; font-size:17px; font-weight:900; letter-spacing:-.02em; text-transform:uppercase; }
+.field-label { display:block; margin-bottom:8px; font-family:"SFMono-Regular",Consolas,monospace; font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.34); }
+.field-input { min-width:0; width:100%; height:40px; border:1px solid rgba(255,255,255,.13); background:#070908; padding:0 12px; color:white; outline:none; transition:border-color .15s ease,box-shadow .15s ease; }
+.field-input:focus { border-color:#b8ff38; box-shadow:0 0 0 2px rgba(184,255,56,.08); }
+.field-input::placeholder { color:rgba(255,255,255,.2); }
+
+::-webkit-scrollbar { width:9px; height:9px; }
+::-webkit-scrollbar-track { background:#070908; }
+::-webkit-scrollbar-thumb { background:rgba(255,255,255,.14); border:2px solid #070908; }
+
+@media (prefers-reduced-motion:no-preference) {
+  @keyframes signal-pulse { 0%,100%{opacity:.5}50%{opacity:1} }
+  .signal-pulse { animation:signal-pulse 1.6s ease-in-out infinite; }
+}

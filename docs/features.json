@@ -1,0 +1,17 @@
+[
+  {
+    "id": "search",
+    "name": "Semantic Search",
+    "description": "Find relevant code and engineering knowledge by meaning, not exact keywords."
+  },
+  {
+    "id": "summary",
+    "name": "AI Summary",
+    "description": "Turn long engineering context into concise, actionable summaries."
+  },
+  {
+    "id": "sharing",
+    "name": "Team Sharing",
+    "description": "Generate links that let teammates share product context and results."
+  }
+]
