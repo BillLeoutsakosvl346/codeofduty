@@ -1,0 +1,20 @@
+{
+  "files": [
+    {
+      "path": "contracts/pr-contribution.v1.schema.json",
+      "description": "Machine-readable contract for contributor declarations in pull request descriptions."
+    },
+    {
+      "path": "catalog/features.json",
+      "description": "Stable feature IDs and the code paths that implement each demo feature."
+    },
+    {
+      "path": "catalog/contributors.json",
+      "description": "Allowlisted contributor identities. Git push identity is provenance only."
+    },
+    {
+      "path": "docs/ownership-model.md",
+      "description": "Authoritative rules for calculating feature ownership over time."
+    }
+  ]
+}

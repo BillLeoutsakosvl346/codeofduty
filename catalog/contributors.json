@@ -1,0 +1,8 @@
+{
+  "schema_version": "contributors/v1",
+  "contributors": [
+    { "contributor_id": "aanishs", "display_name": "Aanish", "github_login": "aanishs" },
+    { "contributor_id": "bill", "display_name": "Bill", "github_login": "BillLeoutsakosvl346" },
+    { "contributor_id": "claude", "display_name": "Claude", "github_login": null }
+  ]
+}

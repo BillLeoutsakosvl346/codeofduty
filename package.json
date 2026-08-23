@@ -8,6 +8,9 @@
     "dev:web": "vite",
     "dev:api": "tsx scripts/dev-api.ts",
     "build": "tsc -b && tsc -p tsconfig.server.json && vite build",
+    "ownership:validate": "tsx scripts/ownership/validate-pr.ts",
+    "ownership:rebuild": "tsx scripts/ownership/rebuild-map.ts",
+    "ownership:remember": "tsx scripts/ownership/remember-event.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "preview": "vite preview"

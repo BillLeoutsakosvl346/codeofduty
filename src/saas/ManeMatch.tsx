@@ -4,6 +4,9 @@ import { FEATURE_ACTIONS, type FeatureId, type UsageResponse } from "../../share
 import { createCheckout, mirrorUsage } from "../lib/demoApi";
 import { getDemoSessionId, getDemoUserId } from "../lib/demoIdentity";
 import { captureFeatureUsed, identifyDemoUser, isPostHogConfigured } from "../lib/posthog";
+import { nextDiscoveryIndex } from "./features/search";
+import { stableProfileUrl } from "./features/sharing";
+import { compatibilityInsight } from "./features/summary";
 import "./mane-match.css";
 
 type Horse = {
@@ -140,7 +143,7 @@ export function ManeMatch() {
     setShareUrl("");
     await new Promise((resolve) => window.setTimeout(resolve, 260));
     await recordFeature("search", swipedHorse);
-    setHorseIndex((current) => (current + 1) % HORSES.length);
+    setHorseIndex((current) => nextDiscoveryIndex(current, HORSES.length));
     setNotice(`${direction === "like" ? "Saved" : "Passed on"} ${swipedHorse.name} · Discover event confirmed`);
     window.setTimeout(() => setNotice(""), 3000);
     setBusy(null);
@@ -159,7 +162,7 @@ export function ManeMatch() {
     if (busy) return;
     setBusy("sharing");
     await new Promise((resolve) => window.setTimeout(resolve, 220));
-    setShareUrl(`${window.location.origin}/#/stable/${selectedHorse.slug}`);
+    setShareUrl(stableProfileUrl(window.location.origin, selectedHorse.slug));
     await recordFeature("sharing", selectedHorse);
     setBusy(null);
   }
@@ -220,7 +223,7 @@ export function ManeMatch() {
               <button className={insightHorse?.slug === selectedHorse.slug ? "complete" : ""} onClick={() => void generateInsight()} disabled={busy !== null} aria-describedby="compatibility-description"><span className="tool-icon ai" aria-hidden="true">✦</span><span><strong>{busy === "summary" ? "Reading your preferences…" : "AI compatibility insight"}</strong><small id="compatibility-description">Why this horse fits your riding life</small></span><b>{insightHorse?.slug === selectedHorse.slug ? "✓" : "→"}</b></button>
               <button className={shareUrl ? "complete" : ""} onClick={() => void generateShareLink()} disabled={busy !== null} aria-describedby="share-description"><span className="tool-icon share" aria-hidden="true">↗</span><span><strong>{busy === "sharing" ? "Preparing profile…" : "Share stable profile"}</strong><small id="share-description">Create a stable link for {selectedHorse.name}</small></span><b>{shareUrl ? "✓" : "→"}</b></button>
             </div>
-            {insightHorse?.slug === selectedHorse.slug && <div className="insight-card" aria-live="polite"><div><span>✦ MANEMATCH INSIGHT</span><strong>{selectedHorse.compatibility}% compatibility</strong></div><p>{selectedHorse.insight}</p></div>}
+            {insightHorse?.slug === selectedHorse.slug && <div className="insight-card" aria-live="polite"><div><span>✦ MANEMATCH INSIGHT</span><strong>{selectedHorse.compatibility}% compatibility</strong></div><p>{compatibilityInsight(selectedHorse)}</p></div>}
             {shareUrl && <div className="share-card" aria-live="polite"><span>STABLE PROFILE LINK</span><div><input value={shareUrl} readOnly aria-label={`${selectedHorse.name} stable profile link`} /><button onClick={() => void navigator.clipboard?.writeText(shareUrl)}>Copy</button></div></div>}
           </section>
         </main>
@@ -258,4 +261,3 @@ export function ManeMatch() {
 }
 
 export default ManeMatch;
-

@@ -1,0 +1,20 @@
+{
+  "schema_version": "feature-code-map/v1",
+  "features": [
+    {
+      "feature_id": "search",
+      "name": "Discover",
+      "paths": ["src/saas/features/search.ts"]
+    },
+    {
+      "feature_id": "summary",
+      "name": "AI Compatibility",
+      "paths": ["src/saas/features/summary.ts"]
+    },
+    {
+      "feature_id": "sharing",
+      "name": "Stable Share Link",
+      "paths": ["src/saas/features/sharing.ts"]
+    }
+  ]
+}

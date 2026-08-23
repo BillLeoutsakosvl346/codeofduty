@@ -1,0 +1,32 @@
+{
+  "schema_version": "feature-ownership/v1",
+  "repository": "BillLeoutsakosvl346/codeofduty",
+  "generated_at": "2026-08-22T18:00:00.000Z",
+  "through_event_count": 3,
+  "features": [
+    {
+      "feature_id": "search",
+      "total_contribution_points": 9,
+      "owners": [
+        {
+          "contributor_id": "aanishs",
+          "contribution_points": 3,
+          "ownership_bps": 3334,
+          "ownership_share": 0.3334
+        },
+        {
+          "contributor_id": "bill",
+          "contribution_points": 3,
+          "ownership_bps": 3333,
+          "ownership_share": 0.3333
+        },
+        {
+          "contributor_id": "claude",
+          "contribution_points": 3,
+          "ownership_bps": 3333,
+          "ownership_share": 0.3333
+        }
+      ]
+    }
+  ]
+}

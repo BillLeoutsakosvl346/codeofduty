@@ -1,10 +1,11 @@
 import { T, glow } from "./ui/theme";
 
-export type Tab = "retention" | "engineers" | "bounties" | "attribution";
+export type Tab = "retention" | "ownership" | "engineers" | "bounties" | "attribution";
 
 export function TopBar({ tab, openCount }: { tab: Tab; openCount: number }) {
   const tabs: { id: Tab; label: string; href: string; color: string }[] = [
     { id: "retention", label: "Impact", href: "#/retention", color: T.good },
+    { id: "ownership", label: "Ownership", href: "#/ownership", color: T.cyan },
     { id: "engineers", label: "Leaderboard", href: "#/engineers", color: T.violet },
     { id: "bounties", label: "Bounties", href: "#/bounties", color: T.magenta },
   ];

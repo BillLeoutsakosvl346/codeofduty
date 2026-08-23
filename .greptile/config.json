@@ -1,0 +1,14 @@
+{
+  "strictness": 2,
+  "commentTypes": ["logic", "info"],
+  "triggerOnUpdates": true,
+  "shouldUpdateDescription": false,
+  "rules": [
+    {
+      "id": "code-of-duty-contribution-declaration",
+      "rule": "Review the CODE_OF_DUTY_CONTRIBUTION_V1 block in the pull request description against the actual diff. Flag a declared feature when the changed code does not implement or affect that feature. Flag implementation, architecture, testing, product, or review roles that are contradicted by the PR evidence. Never assign contribution credit from the branch pusher, commit author, or PR author alone. Do not change numeric shares; report mismatches for human approval.",
+      "scope": ["src/**", "server/**", "shared/**"],
+      "severity": "high"
+    }
+  ]
+}

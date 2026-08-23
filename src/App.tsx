@@ -4,6 +4,7 @@ import { bounties as seedBounties, clients, engineers, features, missions } from
 import { AttributionPage } from "./pages/Attribution";
 import { BountiesPage } from "./pages/Bounties";
 import { EngineersPage } from "./pages/Engineers";
+import { OwnershipPage } from "./pages/Ownership";
 import { RetentionPage } from "./pages/Retention";
 import type { Bounty } from "./types";
 import { liveStats } from "./types";
@@ -15,6 +16,7 @@ type Route =
   | { tab: "engineers" }
   | { tab: "bounties" }
   | { tab: "retention" }
+  | { tab: "ownership" }
   | { tab: "attribution" }
   | { tab: "demo" };
 
@@ -23,6 +25,7 @@ function parseHash(): Route {
   if (hash === "#/engineers") return { tab: "engineers" };
   if (hash.startsWith("#/bounties")) return { tab: "bounties" };
   if (hash === "#/retention") return { tab: "retention" };
+  if (hash === "#/ownership") return { tab: "ownership" };
   if (hash === "#/attribution") return { tab: "attribution" };
   if (hash === "#/demo") return { tab: "demo" };
   return { tab: "retention" };
@@ -51,6 +54,7 @@ export default function App() {
   let content: React.ReactNode;
   if (route.tab === "engineers") content = <EngineersPage stats={stats} me={me} />;
   else if (route.tab === "bounties") content = <BountiesPage bounties={bounties} missions={missions} features={features} clients={clients} engineers={engineers} me={me} onClaim={claim} />;
+  else if (route.tab === "ownership") content = <OwnershipPage />;
   else if (route.tab === "attribution") content = <AttributionPage />;
   else content = <RetentionPage />;
 
