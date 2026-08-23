@@ -83,9 +83,9 @@ const HORSES: Horse[] = [
 ];
 
 const FEATURE_NAMES: Record<FeatureId, string> = {
-  search: "Discover swipe",
-  summary: "AI compatibility",
-  sharing: "Stable share link",
+  search: "Horse Discovery",
+  summary: "AI Compatibility",
+  sharing: "Stable Sharing",
 };
 
 const EMPTY_TOTALS: UsageResponse["totals"] = { search: 0, summary: 0, sharing: 0 };
