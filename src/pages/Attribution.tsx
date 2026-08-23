@@ -27,13 +27,12 @@ const FEATURES: Array<{ id: FeatureId; name: string; color: string }> = [
 ];
 
 const SEARCH_CORPUS = [
-  "Juniper · 6-year-old Hanoverian · dressage · Bay Area",
-  "Apollo · 8-year-old Thoroughbred · trail riding · Austin",
-  "Clover · 5-year-old Connemara · eventing · Portland",
-  "Marigold · 7-year-old Quarter Horse · western · Denver",
+  "Sienna · 7-year-old Andalusian mare · dressage + trail · Santa Ynez",
+  "Atlas · 9-year-old Dutch Warmblood gelding · jumping + equitation · Ojai",
+  "Clover · 6-year-old Connemara mare · eventing + trail · Temecula",
 ];
 
-const PRELOADED_DOCUMENT = "Juniper prefers calm morning rides, dressage arenas, apple treats, and confident trail partners. She is social in turnout and travels well.";
+const PRELOADED_PROFILE = "Sienna is a calm, people-focused Andalusian mare who enjoys dressage, relaxed trail work, and a consistent rider.";
 
 type FeatureStatus = Partial<Record<FeatureId, string>>;
 type Totals = Record<FeatureId, number>;
@@ -156,12 +155,12 @@ export function AttributionPage() {
   };
 
   const generateSummary = () => {
-    setSummary("Strong compatibility: both profiles favor calm morning exercise, structured arena work, and social turnout. Suggested first meet: a low-pressure parallel trail walk.");
+    setSummary("94% fit: Sienna matches your preference for a calm, responsive horse with dressage experience and trail confidence. Suggested first meet: a quiet arena session followed by a short walk.");
     void recordSuccess("summary");
   };
 
   const generateShareLink = () => {
-    setShareLink(`${window.location.origin}/stable/juniper-${crypto.randomUUID().slice(0, 8)}`);
+    setShareLink(`${window.location.origin}/stable/sienna-${crypto.randomUUID().slice(0, 8)}`);
     void recordSuccess("sharing");
   };
 
@@ -228,15 +227,15 @@ export function AttributionPage() {
   return (
     <div className="narrow-page attribution-page">
       <a href="#/retention" className="back-link">← IMPACT</a>
-      <div className="page-intro compact"><div><Label color={T.cyan}>Milestone 1 · live integration</Label><h1 className="display page-title">USE FEATURES. GET PAID.</h1><p>Complete two real demo workflows, then make a $100 Stripe test payment.</p></div><div className="tag-row"><Tag color={posthogEnabled ? T.good : T.warn}>{posthogEnabled ? "POSTHOG READY" : "POSTHOG KEY MISSING"}</Tag><Tag color={T.cyan}>DB · {Object.values(totals).reduce((a, b) => a + b, 0)} EVENTS</Tag></div></div>
+      <div className="page-intro compact"><div><Label color={T.cyan}>ManeMatch · live attribution</Label><h1 className="display page-title">USE MANEMATCH. MAP REVENUE.</h1><p>Complete two horse-matching workflows, then make a $100 Stripe test payment.</p></div><div className="tag-row"><Tag color={posthogEnabled ? T.good : T.warn}>{posthogEnabled ? "POSTHOG READY" : "POSTHOG KEY MISSING"}</Tag><Tag color={T.cyan}>DB · {Object.values(totals).reduce((a, b) => a + b, 0)} EVENTS</Tag></div></div>
 
       {checkoutReturn.payment === "cancelled" && <Panel color={T.warn} style={{ marginBottom: 14 }}><Label color={T.warn}>Checkout cancelled</Label><p className="decision-copy">No payment was recorded. Your feature usage remains available for another test checkout.</p></Panel>}
       {checkoutReturn.paymentId && <Panel color={impactState === "error" ? T.bad : T.cyan} className={impactState === "polling" ? "sweep" : undefined} style={{ marginBottom: 14 }}><div className="pipeline-head" style={{ marginBottom: 0 }}><div><Label color={impactState === "error" ? T.bad : T.cyan}>Stripe return · {checkoutReturn.paymentId}</Label><h2 className="display" style={{ margin: "8px 0 4px" }}>{impactState === "polling" ? "WAITING FOR SIGNED WEBHOOK" : impactState === "waiting" ? "PAYMENT NOT READY" : "ATTRIBUTION NEEDS RECOVERY"}</h2><p className="decision-copy" style={{ margin: 0 }}>{impactError ?? "The page is polling for the validated revenue-impact envelope."}</p></div>{(impactState === "waiting" || impactState === "error") && <Button color={T.warn} onClick={() => void recover()}>Run recovery</Button>}</div></Panel>}
 
       <div className="detail-grid" style={{ gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}>
         <Panel color={T.cyan}><Label color={T.cyan}>01 · Horse Discovery</Label><h2 className="display" style={{ margin: "8px 0" }}>FIND A MATCH</h2><p className="microcopy">Filter the ManeMatch herd and reveal compatible profiles.</p><input aria-label="Horse discovery query" value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") runSearch(); }} placeholder="Try: dressage" style={fieldStyle} /><div className="action-row"><Button small color={T.cyan} onClick={runSearch}>{busyFeature === "search" ? "Saving…" : "Discover"}</Button><Tag color={T.cyan}>{totals.search} DB</Tag></div>{searchResults.length > 0 && <div className="evidence-copy">{searchResults.map((result) => <p key={result}>{result}</p>)}</div>}<p className="microcopy">{featureStatus.search}</p></Panel>
-        <Panel color={T.magenta}><Label color={T.magenta}>02 · AI Compatibility</Label><h2 className="display" style={{ margin: "8px 0" }}>MATCH NOTE</h2><p className="microcopy">{PRELOADED_DOCUMENT}</p><div className="action-row"><Button small color={T.magenta} onClick={generateSummary}>{busyFeature === "summary" ? "Saving…" : "Generate insight"}</Button><Tag color={T.magenta}>{totals.summary} DB</Tag></div>{summary && <p className="decision-copy">{summary}</p>}<p className="microcopy">{featureStatus.summary}</p></Panel>
-        <Panel color={T.violet}><Label color={T.violet}>03 · Stable Sharing</Label><h2 className="display" style={{ margin: "8px 0" }}>PROFILE LINK</h2><p className="microcopy">Generate a stable-safe link for Juniper's profile.</p><div className="action-row"><Button small color={T.violet} onClick={generateShareLink}>{busyFeature === "sharing" ? "Saving…" : "Share profile"}</Button><Tag color={T.violet}>{totals.sharing} DB</Tag></div>{shareLink && <input aria-label="Generated stable profile link" readOnly value={shareLink} style={fieldStyle} />}<p className="microcopy">{featureStatus.sharing}</p></Panel>
+        <Panel color={T.magenta}><Label color={T.magenta}>02 · AI Compatibility</Label><h2 className="display" style={{ margin: "8px 0" }}>MATCH NOTE</h2><p className="microcopy">{PRELOADED_PROFILE}</p><div className="action-row"><Button small color={T.magenta} onClick={generateSummary}>{busyFeature === "summary" ? "Saving…" : "Generate insight"}</Button><Tag color={T.magenta}>{totals.summary} DB</Tag></div>{summary && <p className="decision-copy">{summary}</p>}<p className="microcopy">{featureStatus.summary}</p></Panel>
+        <Panel color={T.violet}><Label color={T.violet}>03 · Stable Sharing</Label><h2 className="display" style={{ margin: "8px 0" }}>PROFILE LINK</h2><p className="microcopy">Generate a trainer-safe link for Sienna's profile.</p><div className="action-row"><Button small color={T.violet} onClick={generateShareLink}>{busyFeature === "sharing" ? "Saving…" : "Share profile"}</Button><Tag color={T.violet}>{totals.sharing} DB</Tag></div>{shareLink && <input aria-label="Generated stable profile link" readOnly value={shareLink} style={fieldStyle} />}<p className="microcopy">{featureStatus.sharing}</p></Panel>
       </div>
 
       <Panel color={canCheckout ? T.good : T.yellow} style={{ marginTop: 14 }}>

@@ -13,7 +13,7 @@
     },
     {
       "feature_id": "sharing",
-      "name": "Stable Share Link",
+      "name": "Stable Sharing",
       "paths": ["src/saas/features/sharing.ts"]
     }
   ]

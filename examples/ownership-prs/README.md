@@ -2,7 +2,7 @@
 
 These three descriptions model PRs pushed by the same `demo-bot` account. Credit comes only from the validated contribution block:
 
-| Merge | Declared contribution | Search ownership after merge |
+| Merge | Declared contribution | Horse Discovery ownership after merge |
 | --- | --- | --- |
 | `01-discover-foundation.md` | Aanish 60%, Bill 40% of a 5-point foundation | Aanish 60%, Bill 40% |
 | `02-discover-wraparound-fix.md` | Bill 100% of a 1-point patch | Aanish 50%, Bill 50% |

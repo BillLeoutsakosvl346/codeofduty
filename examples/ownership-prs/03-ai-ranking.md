@@ -16,7 +16,7 @@ Add a new discovery ranking rule produced by Claude and accepted after human rev
       "roles": ["implementation"]
     }
   ],
-  "summary": "Claude implemented the new discovery ranking behavior under human review."
+  "summary": "Claude implemented compatibility-aware horse ranking under human review."
 }
 CODE_OF_DUTY_CONTRIBUTION_V1 -->
 

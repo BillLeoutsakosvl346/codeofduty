@@ -16,7 +16,7 @@ Prevent discovery from selecting an invalid profile after the last horse in the 
       "roles": ["implementation", "testing"]
     }
   ],
-  "summary": "Bill fixed the discovery rotation edge case and added the regression coverage."
+  "summary": "Bill fixed the horse-card rotation edge case and added the regression coverage."
 }
 CODE_OF_DUTY_CONTRIBUTION_V1 -->
 

@@ -21,7 +21,7 @@ Split the horse discovery rotation into a feature-owned module and made the next
       "roles": ["product", "review"]
     }
   ],
-  "summary": "Aanish implemented discovery while Bill defined and reviewed the product workflow."
+  "summary": "Aanish built the horse discovery swipe deck while Bill defined and reviewed the rider workflow."
 }
 CODE_OF_DUTY_CONTRIBUTION_V1 -->
 
