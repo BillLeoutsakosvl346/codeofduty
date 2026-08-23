@@ -254,7 +254,7 @@ export function ManeMatch() {
         </aside>
       </div>
 
-      <div className="mane-back"><a href="#/overview">← Back to Code of Duty</a></div>
+      <div className="mane-back"><a href="#/retention">← Back to Code of Duty</a></div>
       {notice && <div className="mane-toast" role="status" aria-live="polite"><span>✓</span><div><strong>{notice.split(" · ")[0]}</strong><small>{notice.split(" · ")[1]}</small></div></div>}
     </div>
   );

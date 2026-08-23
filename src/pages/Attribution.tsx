@@ -199,7 +199,7 @@ export function AttributionPage() {
     const conserved = isConserved(impact);
     return (
       <div className="narrow-page attribution-page">
-        <a href="#/overview" className="back-link">← COMMAND CENTER</a>
+        <a href="#/retention" className="back-link">← IMPACT</a>
         <div className="page-intro compact"><div><Label color={T.good}>Live revenue attribution</Label><h1 className="display page-title">IMPACT COMMITTED</h1><p>Stripe payment and pre-payment feature evidence produced a validated JSON record.</p></div><Tag color={conserved ? T.good : T.bad}>{conserved ? "REVENUE CONSERVED" : "VALIDATION FAILED"}</Tag></div>
         {fallback && <Panel color={T.warn} style={{ marginBottom: 14 }}><Label color={T.warn}>Deterministic fallback</Label><p className="decision-copy">The model provider was unavailable, so this run used the explicitly labeled deterministic attribution fallback.</p></Panel>}
         <Panel color={T.good} className="sweep">
@@ -219,7 +219,7 @@ export function AttributionPage() {
           <Panel><Label>Evidence returned by agent</Label><div className="evidence-copy">{output.allocations.map((item) => <div key={item.feature_id}><p><b>{allocationNames[item.feature_id]}</b> — {item.reasoning}</p><ul>{item.evidence.map((line) => <li key={line}>{line}</li>)}</ul></div>)}</div></Panel>
           <Panel color={T.violet}><Label color={T.violet}>Machine-readable output</Label><p className="decision-copy">This exact versioned envelope is the stable input for a future Greptile adapter. Milestone 1 does not send customer records to Greptile, and the UI never recomputes cents.</p><div className="confidence"><span>RUN ID</span><b className="display" style={{ fontSize: 18 }}>{impact.run_id.slice(0, 12)}</b></div><Button color={T.violet} onClick={() => setShowJson(true)}>View raw JSON</Button></Panel>
         </div>
-        <div className="result-actions"><Button href="#/overview" color={T.cyan}>View command center</Button></div>
+        <div className="result-actions"><Button href="#/retention" color={T.cyan}>View updated impact</Button></div>
         {showJson && <div className="drawer-backdrop" onClick={() => setShowJson(false)}><aside className="json-drawer" onClick={(event) => event.stopPropagation()}><div className="drawer-head"><div><Label color={T.cyan}>Validated output envelope</Label><h2 className="display">RAW JSON</h2></div><button onClick={() => setShowJson(false)}>CLOSE ×</button></div><div className="drawer-tabs"><Tag color={T.cyan}>{impact.schema_version}</Tag><Tag color={T.good}>SCHEMA VALID</Tag></div><pre>{impactJson}</pre><div className="drawer-validation"><span>✓</span><div><b>REVENUE CONSERVATION {conserved ? "PASSED" : "FAILED"}</b><small>{output.total_revenue_cents.toLocaleString()} total cents · {output.unattributed_revenue_cents} unattributed</small></div></div></aside></div>}
       </div>
     );
@@ -227,7 +227,7 @@ export function AttributionPage() {
 
   return (
     <div className="narrow-page attribution-page">
-      <a href="#/overview" className="back-link">← COMMAND CENTER</a>
+      <a href="#/retention" className="back-link">← IMPACT</a>
       <div className="page-intro compact"><div><Label color={T.cyan}>Milestone 1 · live integration</Label><h1 className="display page-title">USE FEATURES. GET PAID.</h1><p>Complete two real demo workflows, then make a $100 Stripe test payment.</p></div><div className="tag-row"><Tag color={posthogEnabled ? T.good : T.warn}>{posthogEnabled ? "POSTHOG READY" : "POSTHOG KEY MISSING"}</Tag><Tag color={T.cyan}>DB · {Object.values(totals).reduce((a, b) => a + b, 0)} EVENTS</Tag></div></div>
 
       {checkoutReturn.payment === "cancelled" && <Panel color={T.warn} style={{ marginBottom: 14 }}><Label color={T.warn}>Checkout cancelled</Label><p className="decision-copy">No payment was recorded. Your feature usage remains available for another test checkout.</p></Panel>}
@@ -240,7 +240,7 @@ export function AttributionPage() {
       </div>
 
       <Panel color={canCheckout ? T.good : T.yellow} style={{ marginTop: 14 }}>
-        <div className="result-head"><div><Label color={canCheckout ? T.good : T.yellow}>Stripe test payment</Label><h2 className="display">CODE OF DUTY PRO</h2><p>{canCheckout ? "Two distinct features are database-confirmed. Checkout is unlocked." : `Use ${Math.max(0, 2 - distinctFeatures)} more distinct feature${2 - distinctFeatures === 1 ? "" : "s"} to unlock checkout.`}</p>{checkoutError && <p style={{ color: T.bad }}>{checkoutError}</p>}</div><div><Big color={T.yellow} size={64}>$100.00</Big><button className="chamfer-sm cod-button" disabled={!canCheckout} onClick={() => void startCheckout()} style={{ background: canCheckout ? T.good : T.borderStrong, border: 0, color: T.bg, padding: "12px 20px", fontWeight: 900, letterSpacing: 1.4, cursor: canCheckout ? "pointer" : "not-allowed", marginTop: 10 }}>{checkoutBusy ? "OPENING STRIPE…" : "PAY IN STRIPE TEST MODE"}</button></div></div>
+        <div className="result-head"><div><Label color={canCheckout ? T.good : T.yellow}>Stripe test payment</Label><h2 className="display">MANEMATCH+</h2><p>{canCheckout ? "Two distinct features are database-confirmed. Checkout is unlocked." : `Use ${Math.max(0, 2 - distinctFeatures)} more distinct feature${2 - distinctFeatures === 1 ? "" : "s"} to unlock checkout.`}</p>{checkoutError && <p style={{ color: T.bad }}>{checkoutError}</p>}</div><div><Big color={T.yellow} size={64}>$100.00</Big><button className="chamfer-sm cod-button" disabled={!canCheckout} onClick={() => void startCheckout()} style={{ background: canCheckout ? T.good : T.borderStrong, border: 0, color: T.bg, padding: "12px 20px", fontWeight: 900, letterSpacing: 1.4, cursor: canCheckout ? "pointer" : "not-allowed", marginTop: 10 }}>{checkoutBusy ? "OPENING STRIPE…" : "PAY IN STRIPE TEST MODE"}</button></div></div>
       </Panel>
       <p className="microcopy">Demo customer: {identity.userId} · browser session: {identity.sessionId}</p>
     </div>
