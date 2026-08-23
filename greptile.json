@@ -1,0 +1,14 @@
+{
+  "triggerOnUpdates": true,
+  "triggerOnDrafts": true,
+  "statusCommentsEnabled": true,
+  "statusCheck": false,
+  "shouldUpdateDescription": false,
+  "updateSummaryOnly": true,
+  "summarySection": {
+    "included": true,
+    "collapsible": false,
+    "defaultOpen": true
+  },
+  "instructions": "In every pull request summary, include a section titled 'Code of Duty Feature Impact'. Classify the material impact of the pull request across exactly four categories: Semantic Search, AI Summary, Team Sharing, and Infrastructure / No Product Feature. Assign a whole-number percentage to every category, including zeroes, and make the four percentages total exactly 100%. Base the estimate on the semantic importance of the changed behavior, not lines changed. After the table, explain every non-zero allocation in one concise sentence. Label the result 'Greptile estimated PR impact' and do not describe these values as final ownership or ARR attribution. Always include this section, even when the pull request only affects infrastructure."
+}
