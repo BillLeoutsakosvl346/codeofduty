@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element -- GitHub avatar URLs are dynamic provider data. */
+/* eslint-disable @next/next/no-img-element, @next/next/no-html-link-for-pages -- Provider avatars are dynamic; hard navigation is required on Sites. */
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, CircleDollarSign, GitPullRequest, Layers3, Target, TrendingUp, Trophy } from 'lucide-react';
 import { ActivityFeed } from '@/components/activity-feed';
@@ -37,7 +36,7 @@ export default async function PlayerPage({ params }: { params: Promise<{ enginee
   ];
 
   return <main className="min-h-screen"><SiteHeader /><div className="mx-auto max-w-[1320px] px-5 py-8 md:px-10 md:py-10">
-    <Link href="/" className="mb-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-white/35 transition hover:text-[#b8ff38]"><ArrowLeft size={14} /> Back to leaderboard</Link>
+    <a href="/" className="mb-6 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-white/35 transition hover:text-[#b8ff38]"><ArrowLeft size={14} /> Back to leaderboard</a>
     <section className="relative overflow-hidden border border-white/10 bg-[#0a0d0b] p-6 sm:p-8">
       <div className="absolute -right-16 -top-24 h-64 w-64 rounded-full bg-[#b8ff38]/8 blur-3xl" />
       <div className="relative grid gap-8 lg:grid-cols-[1fr_1.45fr] lg:items-end">
