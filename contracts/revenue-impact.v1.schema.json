@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeofduty.local/contracts/revenue-impact.v1.schema.json",
+  "title": "Revenue Impact Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "run_id", "generated_at", "impact"],
+  "properties": {
+    "schema_version": { "const": "revenue-impact/v1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "impact": { "$ref": "#/$defs/revenueImpact" }
+  },
+  "$defs": {
+    "featureId": {
+      "type": "string",
+      "enum": ["search", "summary", "sharing"]
+    },
+    "allocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature_id",
+        "weight",
+        "revenue_impact_cents",
+        "evidence",
+        "reasoning",
+        "confidence"
+      ],
+      "properties": {
+        "feature_id": { "$ref": "#/$defs/featureId" },
+        "weight": { "type": "number", "minimum": 0, "maximum": 1 },
+        "revenue_impact_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "reasoning": { "type": "string", "minLength": 1 },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "revenueImpact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payment_id",
+        "user_id",
+        "total_revenue_cents",
+        "currency",
+        "attribution_model",
+        "attribution_window_days",
+        "allocations",
+        "unattributed_revenue_cents"
+      ],
+      "properties": {
+        "payment_id": { "type": "string", "minLength": 1 },
+        "user_id": { "type": "string", "minLength": 1 },
+        "total_revenue_cents": { "const": 10000 },
+        "currency": { "const": "usd" },
+        "attribution_model": { "const": "agent-usage-v1" },
+        "attribution_window_days": { "const": 7 },
+        "allocations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/allocation" }
+        },
+        "unattributed_revenue_cents": { "const": 0 }
+      }
+    }
+  }
+}
