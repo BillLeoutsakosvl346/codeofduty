@@ -100,7 +100,7 @@ export function DemoLab() {
     if (wordCount < 8) return setMessage('Add at least eight words to summarize.');
     setBusy('summary');
     try {
-      const sentences = summaryInput.match(/[^.!?]+[.!?]+/g) ?? [summaryInput];
+      const sentences = summaryInput.match(/[^.!?]+(?:[.!?]+|$)/g) ?? [summaryInput];
       const generated = sentences.slice(0, 2).join(' ').trim();
       await record('summary');
       setSummary(generated);
